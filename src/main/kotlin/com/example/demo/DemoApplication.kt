@@ -24,6 +24,7 @@ class HelloController(val exerciseRepository: ExerciseRepository) {
 
     @GetMapping("/hello")
     fun pikfjes(): MutableList<Exercise> {
+
         return exerciseRepository.findAll()
     }
 }
