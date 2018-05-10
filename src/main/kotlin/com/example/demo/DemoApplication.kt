@@ -5,6 +5,8 @@ import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -22,10 +24,14 @@ class HelloController(val exerciseRepository: ExerciseRepository) {
     @GetMapping("/")
     fun hello() = exerciseRepository.save(Exercise(1, "Squat"))
 
-    @GetMapping("/hello")
-    fun pikfjes(): MutableList<Exercise> {
-
+    @GetMapping("/exercises")
+    fun getExercises(): List<Exercise> {
         return exerciseRepository.findAll()
+    }
+
+    @PostMapping("/exercises")
+    fun postExercise(@RequestBody exercise: Exercise): Exercise {
+        return exerciseRepository.save(exercise)
     }
 }
 
