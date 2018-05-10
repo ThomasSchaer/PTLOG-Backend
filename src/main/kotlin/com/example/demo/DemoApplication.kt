@@ -4,10 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -21,6 +18,12 @@ fun main(args: Array<String>) {
 
 @RestController
 class HelloController(val exerciseRepository: ExerciseRepository) {
+    @GetMapping("/exercises/{id}")
+    fun getOne (@PathVariable id: Int) = exerciseRepository.getOne(id)
+
+    @DeleteMapping("/exercises/{id}")
+    fun deleteOne (@PathVariable id: Int) = exerciseRepository.deleteById(id)
+
     @GetMapping("/")
     fun hello() = exerciseRepository.save(Exercise(1, "Squat"))
 
