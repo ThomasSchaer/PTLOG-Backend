@@ -3,6 +3,9 @@
 ## Description
 PTlog backend implemented using springboot and in-memory database
 
+## Dependencies
+```httpie: python needs to be installed```
+
 ## How to launch
 ```.\gradlew bootrun```
 
