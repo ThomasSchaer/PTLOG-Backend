@@ -22,9 +22,10 @@ class HelloController(val exerciseRepository: ExerciseRepository) {
     fun postExercise(@RequestBody exercise: Exercise): Exercise {
         return exerciseRepository.save(exercise)
     }
-    @GetMapping("/exercises")
-    fun getExercises(): List<Exercise> {
-        return exerciseRepository.findAll()
+
+    @PutMapping("/exercises")
+    fun putExercise(@RequestBody exercise: Exercise): Exercise {
+        return exerciseRepository.save(exercise)
     }
 
     @GetMapping("/exercises")
