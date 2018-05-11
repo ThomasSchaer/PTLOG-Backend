@@ -26,15 +26,16 @@ class HelloController(val exerciseRepository: ExerciseRepository) {
     fun getExercises(): List<Exercise> {
         return exerciseRepository.findAll()
     }
+
+    @GetMapping("/exercises")
+    fun getExercises(): List<Exercise> {
+        return exerciseRepository.findAll()
+    }
     @GetMapping("/exercises/{id}")
     fun getOne (@PathVariable id: Int) = exerciseRepository.getOne(id)
 
     @DeleteMapping("/exercises/{id}")
     fun deleteOne (@PathVariable id: Int) = exerciseRepository.deleteById(id)
-
-
-
-
 }
 
 @Entity
