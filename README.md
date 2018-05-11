@@ -15,6 +15,9 @@ PTlog backend implemented using springboot and in-memory database
 ## How to list one exercise
 ```http :8080/exercises/1```
 
+## How to update one exercise
+```http PUT :8080/exercises < httpiefile.json```
+
 ## How to delete one exercise
 ```http DELETE :8080/exercises/1```
 
