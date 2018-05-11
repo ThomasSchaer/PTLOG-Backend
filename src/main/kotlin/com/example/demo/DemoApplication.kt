@@ -18,24 +18,23 @@ fun main(args: Array<String>) {
 
 @RestController
 class HelloController(val exerciseRepository: ExerciseRepository) {
+    @PostMapping("/exercises")
+    fun postExercise(@RequestBody exercise: Exercise): Exercise {
+        return exerciseRepository.save(exercise)
+    }
+    @GetMapping("/exercises")
+    fun getExercises(): List<Exercise> {
+        return exerciseRepository.findAll()
+    }
     @GetMapping("/exercises/{id}")
     fun getOne (@PathVariable id: Int) = exerciseRepository.getOne(id)
 
     @DeleteMapping("/exercises/{id}")
     fun deleteOne (@PathVariable id: Int) = exerciseRepository.deleteById(id)
 
-    @GetMapping("/")
-    fun hello() = exerciseRepository.save(Exercise(1, "Squat"))
 
-    @GetMapping("/exercises")
-    fun getExercises(): List<Exercise> {
-        return exerciseRepository.findAll()
-    }
 
-    @PostMapping("/exercises")
-    fun postExercise(@RequestBody exercise: Exercise): Exercise {
-        return exerciseRepository.save(exercise)
-    }
+
 }
 
 @Entity
