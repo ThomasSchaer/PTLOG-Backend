@@ -40,7 +40,7 @@ class HelloController(val exerciseRepository: ExerciseRepository) {
 }
 
 @Entity
-data class Exercise(
+class Exercise(
         @Id @GeneratedValue
         val id: Int = 0,
         val name: String
