@@ -32,6 +32,7 @@ class HelloController(val exerciseRepository: ExerciseRepository) {
     fun getExercises(): List<Exercise> {
         return exerciseRepository.findAll()
     }
+
     @GetMapping("/exercises/{id}")
     fun getOne (@PathVariable id: Int) = exerciseRepository.getOne(id)
 
