@@ -1,4 +1,4 @@
-package com.example.demo
+package com.ptlog.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -33,21 +33,22 @@ class HelloController(val exerciseRepository: ExerciseRepository) {
         return exerciseRepository.findAll()
     }
 
-    @GetMapping("/exercises/{id}")
-    fun getOne (@PathVariable id: Int) = exerciseRepository.getOne(id)
+    @GetMapping("/exercises/{name}")
+    fun getOne (@PathVariable move: String) = exerciseRepository.getOne(move)
 
-    @DeleteMapping("/exercises/{id}")
-    fun deleteOne (@PathVariable id: Int) = exerciseRepository.deleteById(id)
+    @DeleteMapping("/exercises/{move}")
+    fun deleteOne (@PathVariable move: String) = exerciseRepository.deleteById(move)
 }
 
 @Entity
 class Exercise(
         @Id @GeneratedValue
-        val id: Int = 0,
-        val name: String
+        val move: String,
+        val kilogram: Int,
+        val repetition: Int
 ) {
-    constructor() : this(0, "")
+    constructor() : this("", 0, 0)
 }
 
 @Repository
-interface ExerciseRepository : JpaRepository<Exercise, Int>
+interface ExerciseRepository : JpaRepository<Exercise, String>
